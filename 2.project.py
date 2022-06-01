@@ -27,11 +27,11 @@ def clean_text(text):
     text = ' '.join(text)
     return text
 
-#st.title("Identifying Review's Rating")
-#st.header("Instructions")
-#st.markdown("1.Review column's name should be **Text**")
-#st.markdown("2.Rating column's name should be **Star**")
-#st.markdown("3.Rating range should be 0-5")
+st.title("Identifying Review's Rating")
+st.header("Instructions")
+st.markdown("1.Review column's name should be **Text**")
+st.markdown("2.Rating column's name should be **Star**")
+st.markdown("3.Rating range should be 0-5")
 
 url = st.text("")
 reviewlist = []
@@ -74,10 +74,10 @@ try:
         data = pd.DataFrame(reviewlist)
            
 
-if st.button("Click for Results"):
-    data["body"] = data["body"].apply(lambda x: clean_text(str(x)))
-    sid = SentimentIntensityAnalyzer()
-    data["sentiment_Score"] = data["body"].apply(lambda review:sid.polarity_scores(review))
-    data["sentiment_Compound_Score"]  = data['sentiment_Score'].apply(lambda x: x['compound'])
-    data["Review_type"] = data["sentiment_Compound_Score"].apply(lambda c: 'positive' if c > 0 else ('negative' if c < 0 else 'neutral'))
-    st.bar_chart(data.Review_type.value_counts())
+#if st.button("Click for Results"):
+ #   data["body"] = data["body"].apply(lambda x: clean_text(str(x)))
+  #  sid = SentimentIntensityAnalyzer()
+   # data["sentiment_Score"] = data["body"].apply(lambda review:sid.polarity_scores(review))
+    #data["sentiment_Compound_Score"]  = data['sentiment_Score'].apply(lambda x: x['compound'])
+    #data["Review_type"] = data["sentiment_Compound_Score"].apply(lambda c: 'positive' if c > 0 else ('negative' if c < 0 else 'neutral'))
+    #st.bar_chart(data.Review_type.value_counts())
