@@ -70,17 +70,15 @@ try:
                 pass
             else:
                 break
-             
-           
-data = pd.DataFrame(reviewlist)
+             data = pd.DataFrame(reviewlist)
 
 if st.button("Click for Results") :
-    df["Cleaned_review"] = df["body"].apply(lambda x: clean_text(str(x)))
+    data["Cleaned_review"] = data["body"].apply(lambda x: clean_text(str(x)))
 
     sid = SentimentIntensityAnalyzer()
 
-    df["Vader_Score"] = df["Cleaned_review"].apply(lambda review:sid.polarity_scores(review))
-    df["Vader_Compound_Score"]  = df['Vader_Score'].apply(lambda score_dict: score_dict['compound'])
-    df["Result"] = df["Vader_Compound_Score"].apply(lambda c: 'positive' if c > 0 else ('negative' if c < 0 else 'neutral'))
-    st.bar_chart(df.Result.value_counts())
+    data["Vader_Score"] = data["Cleaned_review"].apply(lambda review:sid.polarity_scores(review))
+    data["Vader_Compound_Score"]  = data['Vader_Score'].apply(lambda score_dict: score_dict['compound'])
+    data["Result"] = data["Vader_Compound_Score"].apply(lambda c: 'positive' if c > 0 else ('negative' if c < 0 else 'neutral'))
+    st.bar_chart(data.Result.value_counts())
 
