@@ -70,9 +70,9 @@ try:
                 pass
             else:
                 break
-                
-data = pd.DataFrame(reviewlist)
+             
            
+data = pd.DataFrame(reviewlist)
 
 if st.button("Click for Results") :
     df["Cleaned_review"] = df["body"].apply(lambda x: clean_text(str(x)))
