@@ -71,8 +71,6 @@ try:
             else:
                 break
                 data = pd.DataFrame(reviewlist)
-except:
-    pass
                 
 if st.button('Click for Result):  
      data["Cleaned_Text"] = data["body"].apply(lambda x: clean_text(str(x)))
