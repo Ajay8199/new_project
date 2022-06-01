@@ -27,11 +27,11 @@ def clean_text(text):
     text = ' '.join(text)
     return text
 
-st.title("Identifying Review's Rating")
-st.header("Instructions")
-st.markdown("1.Review column's name should be **Text**")
-st.markdown("2.Rating column's name should be **Star**")
-st.markdown("3.Rating range should be 0-5")
+#st.title("Identifying Review's Rating")
+#st.header("Instructions")
+#st.markdown("1.Review column's name should be **Text**")
+#st.markdown("2.Rating column's name should be **Star**")
+#st.markdown("3.Rating range should be 0-5")
 
 url = st.text("")
 reviewlist = []
