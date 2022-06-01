@@ -74,10 +74,13 @@ try:
         data = pd.DataFrame(reviewlist)
            
 
-#if st.button("Click for Results"):
- #   data["body"] = data["body"].apply(lambda x: clean_text(str(x)))
-  #  sid = SentimentIntensityAnalyzer()
-   # data["sentiment_Score"] = data["body"].apply(lambda review:sid.polarity_scores(review))
-    #data["sentiment_Compound_Score"]  = data['sentiment_Score'].apply(lambda x: x['compound'])
-    #data["Review_type"] = data["sentiment_Compound_Score"].apply(lambda c: 'positive' if c > 0 else ('negative' if c < 0 else 'neutral'))
-    #st.bar_chart(data.Review_type.value_counts())
+if st.button("Click for Results") :
+    df["Cleaned_review"] = df["body"].apply(lambda x: clean_text(str(x)))
+
+    sid = SentimentIntensityAnalyzer()
+
+    df["Vader_Score"] = df["Cleaned_review"].apply(lambda review:sid.polarity_scores(review))
+    df["Vader_Compound_Score"]  = df['Vader_Score'].apply(lambda score_dict: score_dict['compound'])
+    df["Result"] = df["Vader_Compound_Score"].apply(lambda c: 'positive' if c > 0 else ('negative' if c < 0 else 'neutral'))
+    st.bar_chart(df.Result.value_counts())
+
