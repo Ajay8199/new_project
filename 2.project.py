@@ -81,3 +81,16 @@ if st.button("Click for Results") :
     data["Review_type"] = data["sentiment_Compound_Score"].apply(lambda c: 'positive' if c > 0 else ('negative' if c < 0 else 'neutral'))
     st.bar_chart(data.Review_type.value_counts())
     
+    positive_review = data[(data.Review_type == "positive")]
+    positive_review["Opinion"] = positive_review["Star"].apply(lambda star: "No Attention Needed" if star >= 3 else "Attention Needed")
+    st.bar_chart(positive_review.Opinion.value_counts())
+
+    data = positive_review
+
+    st.download_button(
+        label="Download data as CSV",
+        data=data.to_csv().encode("utf-8"),
+        file_name='data.csv',
+        mime='text/csv',
+    )
+    
