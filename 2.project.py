@@ -45,7 +45,7 @@ try:
             return soup
 
         def get_reviews(soup):
-            reviews = =soup.fing_all('div', {'data-hook':'review'})
+            reviews = soup.fing_all('div', {'data-hook':'review'})
             try:
                 for item in reviews:
                     review = {
