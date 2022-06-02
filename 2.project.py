@@ -74,7 +74,7 @@ try:
 except:
     break
                 
-if st.button('Click for Result):  
+if st.button('Click for Result'):  
      data["Cleaned_Text"] = data["body"].apply(lambda x: clean_text(str(x)))
      sid = SentimentIntensityAnalyzer()
      data["Vader_Score"] = data["Cleaned_Text"].apply(lambda review:sid.polarity_scores(review))
